@@ -1,8 +1,8 @@
 # Build Progress
 
 ## Current Status
-- **Current Phase:** 5
-- **Last Updated:** 2026-02-09T17:38Z
+- **Current Phase:** 6
+- **Last Updated:** 2026-02-09T17:44Z
 - **Last Commit:** pending
 
 ## Phase 0: Environment & Credentials ✅
@@ -57,12 +57,12 @@
 - [x] Task view queries: Today, Upcoming (next 7 days), Overdue
 - [x] Tests for task CRUD, checklists, rotations, reminders, views
 
-## Phase 5: Routines
-- [ ] Routine service: create routine (name, type: morning/evening/leaving)
-- [ ] Routine step service: add/remove/reorder steps in routine
-- [ ] Routine execution: start routine, tap-to-complete each step
-- [ ] Routine auto-reset: daily reset option (clear completed steps at midnight)
-- [ ] Tests for routine CRUD, execution, and auto-reset
+## Phase 5: Routines ✅
+- [x] Routine service: create routine (name, type: morning/evening/leaving)
+- [x] Routine step service: add/remove/reorder steps in routine
+- [x] Routine execution: start routine, tap-to-complete each step
+- [x] Routine auto-reset: daily reset option (clear completed steps at midnight)
+- [x] Tests for routine CRUD, execution, and auto-reset
 
 ## Phase 6: Communication
 - [ ] Announcement service: create, list, pin/unpin announcements in household
