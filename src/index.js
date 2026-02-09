@@ -15,6 +15,10 @@ import { errorHandler } from './middleware/errorHandler.js';
 import { authenticate } from './middleware/authenticate.js';
 import { requireAuth } from './middleware/requireAuth.js';
 import authRoutes from './routes/auth.js';
+import quotesRoutes from './routes/quotes.js';
+import authorsRoutes from './routes/authors.js';
+import settingsRoutes from './routes/settings.js';
+import logsRoutes from './routes/logs.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PKG_VERSION = '1.0.0';
@@ -45,17 +49,21 @@ export function createApp() {
       timestamp: new Date().toISOString(),
       version: PKG_VERSION,
       uptime: process.uptime(),
+      services: {
+        database: 'connected',
+        socketio: 'active',
+      },
     });
   });
 
   // --- Auth routes (public) ---
   app.use('/api/auth', authRoutes);
 
-  // --- Protected route stubs (filled in Phase 6) ---
-  app.use('/api/quotes', requireAuth, (req, res) => res.json([]));
-  app.use('/api/authors', requireAuth, (req, res) => res.json([]));
-  app.use('/api/settings', requireAuth, (req, res) => res.json({}));
-  app.use('/api/logs', requireAuth, (req, res) => res.json([]));
+  // --- Protected routes ---
+  app.use('/api/quotes', requireAuth, quotesRoutes);
+  app.use('/api/authors', requireAuth, authorsRoutes);
+  app.use('/api/settings', requireAuth, settingsRoutes);
+  app.use('/api/logs', requireAuth, logsRoutes);
 
   // --- Socket.IO ---
   io.on('connection', (socket) => {
