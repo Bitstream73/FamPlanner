@@ -1,26 +1,17 @@
-FROM node:20-slim
-
+FROM node:20-alpine AS builder
 WORKDIR /app
-
-# Install build tools for native modules (bcrypt, better-sqlite3)
-RUN apt-get update && apt-get install -y \
-    python3 \
-    make \
-    g++ \
-    && rm -rf /var/lib/apt/lists/*
-
-# Copy package files and install
-COPY package.json package-lock.json ./
+RUN apk add --no-cache python3 make g++
+COPY package*.json ./
 RUN npm ci --omit=dev
 
-# Copy source
+FROM node:20-alpine
+WORKDIR /app
+RUN addgroup -g 1001 -S nodejs && adduser -S nodejs -u 1001
+COPY --from=builder /app/node_modules ./node_modules
 COPY . .
-
-# Create data directory for SQLite
-RUN mkdir -p /app/data
-
+RUN mkdir -p data uploads && chown -R nodejs:nodejs /app
+USER nodejs
 EXPOSE 3000
-
-ENV NODE_ENV=production
-
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://localhost:3000/api/health || exit 1
 CMD ["node", "src/index.js"]
