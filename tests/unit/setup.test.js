@@ -32,7 +32,8 @@ describe('Project Setup', () => {
   it('should have a health endpoint', async () => {
     const { createApp } = await import('../../src/index.js');
     const supertest = (await import('supertest')).default;
-    const res = await supertest(createApp()).get('/api/health');
+    const { app } = createApp();
+    const res = await supertest(app).get('/api/health');
     expect(res.status).toBe(200);
     expect(res.body.status).toBe('healthy');
   });
