@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: [master, develop]
+  pull_request:
+    branches: [master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+        env:
+          NODE_ENV: test
+          GEMINI_API_KEY: test-gemini-key
+          PINECONE_API_KEY: test-pinecone-key
+          PINECONE_INDEX_HOST: https://test.pinecone.io
+          RESEND_API_KEY: test-resend-key
+          RESEND_FROM_EMAIL: noreply@test.com
+          SESSION_SECRET: ci-test-secret-that-is-at-least-32-characters
+
+      - name: Run coverage
+        run: npm run test:coverage
+        env:
+          NODE_ENV: test
+          GEMINI_API_KEY: test-gemini-key
+          PINECONE_API_KEY: test-pinecone-key
+          PINECONE_INDEX_HOST: https://test.pinecone.io
+          RESEND_API_KEY: test-resend-key
+          RESEND_FROM_EMAIL: noreply@test.com
+          SESSION_SECRET: ci-test-secret-that-is-at-least-32-characters
+
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t famplanner:test .
+
+      - name: Smoke test Docker image
+        run: |
+          docker run -d --name smoke \
+            -e GEMINI_API_KEY=test-key \
+            -e PINECONE_API_KEY=test-key \
+            -e PINECONE_INDEX_HOST=https://test.pinecone.io \
+            -e RESEND_API_KEY=test-key \
+            -e RESEND_FROM_EMAIL=noreply@test.com \
+            -e SESSION_SECRET=ci-smoke-test-secret-at-least-32-characters \
+            -e NODE_ENV=production \
+            -p 3000:3000 \
+            famplanner:test
+          sleep 5
+          curl -f http://localhost:3000/api/health || exit 1
+          docker stop smoke
