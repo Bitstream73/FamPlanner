@@ -6,6 +6,14 @@ import { renderAuthors, renderAuthorDetail } from './author.js';
 import { renderSettings, applyTheme } from './settings.js';
 import { renderLogs } from './logs.js';
 import { initSocket, disconnectSocket } from './socket.js';
+import { renderDashboard } from './dashboard.js';
+import { renderHouseholds, renderHouseholdDetail } from './households.js';
+import { renderCalendar } from './calendar-page.js';
+import { renderTasks } from './tasks-page.js';
+import { renderRoutines } from './routines-page.js';
+import { renderAnnouncements } from './announcements-page.js';
+import { renderHandbook } from './handbook-page.js';
+import { renderNotifications } from './notifications-page.js';
 
 const pageContent = () => document.getElementById('page-content');
 const nav = () => document.getElementById('nav');
@@ -86,6 +94,34 @@ async function router() {
   } else if (hash === '#/logs') {
     setActiveLink('logs');
     await renderLogs(container);
+  } else if (hash === '#/dashboard') {
+    setActiveLink('dashboard');
+    await renderDashboard(container);
+  } else if (hash === '#/households') {
+    setActiveLink('households');
+    await renderHouseholds(container);
+  } else if (hash.startsWith('#/households/')) {
+    setActiveLink('households');
+    const id = hash.split('/')[2];
+    await renderHouseholdDetail(container, id);
+  } else if (hash === '#/calendar') {
+    setActiveLink('calendar');
+    await renderCalendar(container);
+  } else if (hash === '#/tasks') {
+    setActiveLink('tasks');
+    await renderTasks(container);
+  } else if (hash === '#/routines') {
+    setActiveLink('routines');
+    await renderRoutines(container);
+  } else if (hash === '#/announcements') {
+    setActiveLink('announcements');
+    await renderAnnouncements(container);
+  } else if (hash === '#/handbook') {
+    setActiveLink('handbook');
+    await renderHandbook(container);
+  } else if (hash === '#/notifications') {
+    setActiveLink('notifications');
+    await renderNotifications(container);
   } else {
     container.innerHTML = '<h2>Page not found</h2>';
   }

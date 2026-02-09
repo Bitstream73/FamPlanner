@@ -357,10 +357,38 @@ tr:hover { background: rgba(79, 70, 229, 0.04); }
   color: var(--primary);
 }
 
+/* Dashboard header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Task card */
+.task-card:hover { border-color: var(--primary); }
+
+/* Progress bar */
+.progress-bar {
+  background: var(--border);
+  border-radius: 4px;
+  height: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.progress-fill {
+  background: var(--success);
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s;
+}
+
 /* Responsive */
 @media (max-width: 640px) {
   .container { padding: 1rem; }
-  .nav { padding: 0.5rem 1rem; }
-  .nav-links { gap: 0.5rem; }
+  .nav { padding: 0.5rem 1rem; flex-wrap: wrap; }
+  .nav-links { gap: 0.25rem; flex-wrap: wrap; }
+  .nav-link { font-size: 0.75rem; padding: 0.2rem 0.4rem; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
+  .dashboard-header { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
 }

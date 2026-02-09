@@ -1,4 +1,4 @@
-const CACHE_NAME = 'famplanner-v1';
+const CACHE_NAME = 'famplanner-v2';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -12,6 +12,14 @@ const STATIC_ASSETS = [
   '/js/settings.js',
   '/js/logs.js',
   '/js/socket.js',
+  '/js/dashboard.js',
+  '/js/households.js',
+  '/js/calendar-page.js',
+  '/js/tasks-page.js',
+  '/js/routines-page.js',
+  '/js/announcements-page.js',
+  '/js/handbook-page.js',
+  '/js/notifications-page.js',
   '/manifest.json',
 ];
 

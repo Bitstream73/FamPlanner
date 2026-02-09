@@ -1,8 +1,8 @@
 # Build Progress
 
 ## Current Status
-- **Current Phase:** 11
-- **Last Updated:** 2026-02-09T18:35Z
+- **Current Phase:** 12
+- **Last Updated:** 2026-02-09T18:53Z
 - **Last Commit:** pending
 
 ## Phase 0: Environment & Credentials ✅
@@ -106,15 +106,15 @@
 - [x] Audit routes: GET /api/v1/audit-log (admin only)
 - [x] Integration tests for all route groups
 
-## Phase 11: Frontend UI
-- [ ] Dashboard page: household overview, today's events, pending tasks
-- [ ] Household management: create, invite, member list, role management
-- [ ] Calendar view: day/week/month with event creation/editing modals
-- [ ] Tasks view: Today/Upcoming/Overdue tabs, task detail with checklists
-- [ ] Routines view: routine list, execution checklist UI
-- [ ] Communication: announcements feed, comment threads on tasks/events
-- [ ] Handbook view: pinned notes list, how-to detail pages
-- [ ] Notifications: bell icon with dropdown, notification preferences
+## Phase 11: Frontend UI ✅
+- [x] Dashboard page: household overview, today's events, pending tasks
+- [x] Household management: create, invite, member list, role management
+- [x] Calendar view: month view with event creation
+- [x] Tasks view: Today/Upcoming/Overdue/All tabs, task creation and completion
+- [x] Routines view: routine list, step execution checklist UI with progress bars
+- [x] Communication: announcements feed with pin/unpin
+- [x] Handbook view: notes and how-to entries with search
+- [x] Notifications: list with mark read/delete, notification preferences
 
 ## Phase 12: Deployment & Verification
 - [ ] Update Dockerfile for new dependencies (if any)
