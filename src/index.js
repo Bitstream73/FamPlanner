@@ -19,6 +19,16 @@ import quotesRoutes from './routes/quotes.js';
 import authorsRoutes from './routes/authors.js';
 import settingsRoutes from './routes/settings.js';
 import logsRoutes from './routes/logs.js';
+import householdsRoutes from './routes/api/v1/households.js';
+import calendarRoutes from './routes/api/v1/calendar.js';
+import tasksRoutes from './routes/api/v1/tasks.js';
+import routinesRoutes from './routes/api/v1/routines.js';
+import announcementsRoutes from './routes/api/v1/announcements.js';
+import commentsRoutes from './routes/api/v1/comments.js';
+import handbookRoutes from './routes/api/v1/handbook.js';
+import notificationsRoutes from './routes/api/v1/notifications.js';
+import exportRoutes from './routes/api/v1/export.js';
+import auditRoutes from './routes/api/v1/audit.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PKG_VERSION = '1.0.0';
@@ -64,6 +74,18 @@ export function createApp() {
   app.use('/api/authors', requireAuth, authorsRoutes);
   app.use('/api/settings', requireAuth, settingsRoutes);
   app.use('/api/logs', requireAuth, logsRoutes);
+
+  // --- MVP v1 routes ---
+  app.use('/api/v1/households', householdsRoutes);
+  app.use('/api/v1', calendarRoutes);
+  app.use('/api/v1', tasksRoutes);
+  app.use('/api/v1', routinesRoutes);
+  app.use('/api/v1', announcementsRoutes);
+  app.use('/api/v1/comments', commentsRoutes);
+  app.use('/api/v1', handbookRoutes);
+  app.use('/api/v1/notifications', notificationsRoutes);
+  app.use('/api/v1', exportRoutes);
+  app.use('/api/v1', auditRoutes);
 
   // --- Socket.IO ---
   io.on('connection', (socket) => {

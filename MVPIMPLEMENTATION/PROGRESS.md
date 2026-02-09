@@ -1,8 +1,8 @@
 # Build Progress
 
 ## Current Status
-- **Current Phase:** 10
-- **Last Updated:** 2026-02-09T18:02Z
+- **Current Phase:** 11
+- **Last Updated:** 2026-02-09T18:35Z
 - **Last Commit:** pending
 
 ## Phase 0: Environment & Credentials ✅
@@ -92,19 +92,19 @@
 - [x] Data export service: generate CSV for user's tasks and events
 - [x] Tests for audit logging, queries, and CSV export
 
-## Phase 10: API Routes
-- [ ] Household routes: POST/GET/PUT/DELETE /api/v1/households, invite, join
-- [ ] Member routes: GET/PUT/DELETE /api/v1/households/:id/members
-- [ ] Profile routes: GET/PUT /api/v1/profile
-- [ ] Calendar routes: full CRUD /api/v1/events, availability blocks
-- [ ] Task routes: full CRUD /api/v1/tasks, checklists, rotations
-- [ ] Routine routes: full CRUD /api/v1/routines, execution endpoints
-- [ ] Communication routes: /api/v1/announcements, /api/v1/comments
-- [ ] Handbook routes: full CRUD /api/v1/handbook
-- [ ] Notification routes: GET/PUT/DELETE /api/v1/notifications
-- [ ] Export routes: GET /api/v1/export/tasks, /api/v1/export/events
-- [ ] Audit routes: GET /api/v1/audit-log (admin only)
-- [ ] Integration tests for all route groups
+## Phase 10: API Routes ✅
+- [x] Household routes: POST/GET/PUT/DELETE /api/v1/households, invite, join
+- [x] Member routes: GET/PUT/DELETE /api/v1/households/:id/members
+- [x] Profile routes: GET/PUT /api/v1/profile
+- [x] Calendar routes: full CRUD /api/v1/events, availability blocks
+- [x] Task routes: full CRUD /api/v1/tasks, checklists, rotations
+- [x] Routine routes: full CRUD /api/v1/routines, execution endpoints
+- [x] Communication routes: /api/v1/announcements, /api/v1/comments
+- [x] Handbook routes: full CRUD /api/v1/handbook
+- [x] Notification routes: GET/PUT/DELETE /api/v1/notifications
+- [x] Export routes: GET /api/v1/export/tasks, /api/v1/export/events
+- [x] Audit routes: GET /api/v1/audit-log (admin only)
+- [x] Integration tests for all route groups
 
 ## Phase 11: Frontend UI
 - [ ] Dashboard page: household overview, today's events, pending tasks
