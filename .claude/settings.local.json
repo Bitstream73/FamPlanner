@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh auth status:*)",
+      "Bash(where:*)",
+      "Bash(railway whoami:*)",
+      "Bash(dir:*)",
+      "Bash(dir \"C:\\\\Program Files \\(x86\\)\\\\GitHub CLI\")",
+      "Bash(\"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" auth status)",
+      "Bash(curl:*)",
+      "Bash(python:*)",
+      "mcp__plugin_pinecone_pinecone__list-indexes",
+      "Bash(npm install:*)",
+      "Bash(npx vitest run:*)",
+      "Bash(git init:*)",
+      "Bash(git config:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}
