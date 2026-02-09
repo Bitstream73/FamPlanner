@@ -1,8 +1,8 @@
 # Build Progress
 
 ## Current Status
-- **Current Phase:** 6
-- **Last Updated:** 2026-02-09T17:44Z
+- **Current Phase:** 7
+- **Last Updated:** 2026-02-09T17:50Z
 - **Last Commit:** pending
 
 ## Phase 0: Environment & Credentials ✅
@@ -64,13 +64,13 @@
 - [x] Routine auto-reset: daily reset option (clear completed steps at midnight)
 - [x] Tests for routine CRUD, execution, and auto-reset
 
-## Phase 6: Communication
-- [ ] Announcement service: create, list, pin/unpin announcements in household
-- [ ] Comment service: add/list comments on tasks and events (polymorphic)
-- [ ] Mention parser: extract @username from text, create mention records
-- [ ] Quiet hours service: set/get quiet hours per user (start/end times)
-- [ ] Socket.IO integration: broadcast announcements and comments in real-time
-- [ ] Tests for announcements, comments, mentions, quiet hours
+## Phase 6: Communication ✅
+- [x] Announcement service: create, list, pin/unpin announcements in household
+- [x] Comment service: add/list comments on tasks and events (polymorphic)
+- [x] Mention parser: extract @username from text, create mention records
+- [x] Quiet hours service: set/get quiet hours per user (start/end times)
+- [x] Socket.IO integration: broadcast announcements and comments in real-time
+- [x] Tests for announcements, comments, mentions, quiet hours
 
 ## Phase 7: Household Handbook
 - [ ] Handbook service: create pinned note (title, content, pinned boolean)
