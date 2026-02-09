@@ -1,8 +1,8 @@
 # Build Progress
 
 ## Current Status
-- **Current Phase:** 2
-- **Last Updated:** 2026-02-09T17:20Z
+- **Current Phase:** 3
+- **Last Updated:** 2026-02-09T17:25Z
 - **Last Commit:** pending
 
 ## Phase 0: Environment & Credentials ✅
@@ -26,15 +26,15 @@
 - [x] Create migration runner and verify all tables exist
 - [x] Tests for all migrations (create, verify schema, rollback)
 
-## Phase 2: Accounts & Roles
-- [ ] Household service: create household with owner
-- [ ] Household service: generate invite link (crypto random token, 48h expiry)
-- [ ] Household service: accept invite (validate token, add member)
-- [ ] Role service: assign role (Parent/Guardian, Teen, Kid, Caregiver)
-- [ ] Permission engine: check permission by role + action
-- [ ] Profile service: update name, avatar URL, pronouns
-- [ ] Household service: list members, remove member, transfer ownership
-- [ ] Tests for household, role, permission, and profile services
+## Phase 2: Accounts & Roles ✅
+- [x] Household service: create household with owner
+- [x] Household service: generate invite link (crypto random token, 48h expiry)
+- [x] Household service: accept invite (validate token, add member)
+- [x] Role service: assign role (Parent/Guardian, Teen, Kid, Caregiver)
+- [x] Permission engine: check permission by role + action
+- [x] Profile service: update name, avatar URL, pronouns
+- [x] Household service: list members, remove member, transfer ownership
+- [x] Tests for household, role, permission, and profile services
 
 ## Phase 3: Calendar & Coverage
 - [ ] Calendar service: create event (title, location, start/end, notes, creator)
