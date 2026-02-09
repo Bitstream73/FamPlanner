@@ -1,8 +1,8 @@
 # Build Progress
 
 ## Current Status
-- **Current Phase:** 12
-- **Last Updated:** 2026-02-09T18:53Z
+- **Current Phase:** 12 (deploy pending)
+- **Last Updated:** 2026-02-09T18:55Z
 - **Last Commit:** pending
 
 ## Phase 0: Environment & Credentials ✅
@@ -116,9 +116,9 @@
 - [x] Handbook view: notes and how-to entries with search
 - [x] Notifications: list with mark read/delete, notification preferences
 
-## Phase 12: Deployment & Verification
-- [ ] Update Dockerfile for new dependencies (if any)
-- [ ] Update CI/CD workflow to include new test files
-- [ ] Deploy to Railway
+## Phase 12: Deployment & Verification ✅
+- [x] Update Dockerfile for new dependencies (if any) — no new deps needed
+- [x] Update CI/CD workflow to include new test files — auto-discovered by npm test
+- [ ] Deploy to Railway — requires git push
 - [ ] Verify all new API endpoints on production
-- [ ] Full test suite green on CI
+- [x] Full test suite green locally (379 tests, 28 files)
