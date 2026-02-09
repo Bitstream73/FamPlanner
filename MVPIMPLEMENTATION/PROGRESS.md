@@ -120,5 +120,5 @@
 - [x] Update Dockerfile for new dependencies (if any) — no new deps needed
 - [x] Update CI/CD workflow to include new test files — auto-discovered by npm test
 - [x] Deploy to Railway — pushed to GitHub (b193c35), CI/CD triggered
-- [ ] Verify all new API endpoints on production (pending Railway deploy)
+- [x] Verify all new API endpoints on production — 11/11 endpoints returning 401 (auth required), all frontend JS files served, no errors in logs
 - [x] Full test suite green locally (379 tests, 28 files)
