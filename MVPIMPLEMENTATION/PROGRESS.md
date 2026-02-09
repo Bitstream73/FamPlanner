@@ -1,8 +1,8 @@
 # Build Progress
 
 ## Current Status
-- **Current Phase:** 7
-- **Last Updated:** 2026-02-09T17:50Z
+- **Current Phase:** 8
+- **Last Updated:** 2026-02-09T17:55Z
 - **Last Commit:** pending
 
 ## Phase 0: Environment & Credentials ✅
@@ -72,11 +72,11 @@
 - [x] Socket.IO integration: broadcast announcements and comments in real-time
 - [x] Tests for announcements, comments, mentions, quiet hours
 
-## Phase 7: Household Handbook
-- [ ] Handbook service: create pinned note (title, content, pinned boolean)
-- [ ] Handbook service: create how-to entry (title, steps array, image URLs)
-- [ ] Handbook service: update, delete, list, search entries
-- [ ] Tests for handbook CRUD and search
+## Phase 7: Household Handbook ✅
+- [x] Handbook service: create pinned note (title, content, pinned boolean)
+- [x] Handbook service: create how-to entry (title, steps array, image URLs)
+- [x] Handbook service: update, delete, list, search entries
+- [x] Tests for handbook CRUD and search
 
 ## Phase 8: Notifications
 - [ ] Notification service: create, list, mark read, delete notifications
