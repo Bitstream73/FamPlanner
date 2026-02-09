@@ -1,8 +1,8 @@
 # Build Progress
 
 ## Current Status
-- **Current Phase:** 3
-- **Last Updated:** 2026-02-09T17:25Z
+- **Current Phase:** 4
+- **Last Updated:** 2026-02-09T17:31Z
 - **Last Commit:** pending
 
 ## Phase 0: Environment & Credentials ✅
@@ -36,15 +36,15 @@
 - [x] Household service: list members, remove member, transfer ownership
 - [x] Tests for household, role, permission, and profile services
 
-## Phase 3: Calendar & Coverage
-- [ ] Calendar service: create event (title, location, start/end, notes, creator)
-- [ ] Calendar service: update and delete events (with permission check)
-- [ ] Calendar service: assign responsible person to event
-- [ ] Availability service: create/update/delete availability blocks per user
-- [ ] Conflict detection: overlap check + "no responsible person" warnings
-- [ ] Recurring events: weekly recurrence with series linking
-- [ ] Calendar queries: day view, week view, month view with filters
-- [ ] Tests for calendar, availability, conflict, and recurrence
+## Phase 3: Calendar & Coverage ✅
+- [x] Calendar service: create event (title, location, start/end, notes, creator)
+- [x] Calendar service: update and delete events (with permission check)
+- [x] Calendar service: assign responsible person to event
+- [x] Availability service: create/update/delete availability blocks per user
+- [x] Conflict detection: overlap check + "no responsible person" warnings
+- [x] Recurring events: weekly recurrence with series linking
+- [x] Calendar queries: day view, week view, month view with filters
+- [x] Tests for calendar, availability, conflict, and recurrence
 
 ## Phase 4: Chores & Tasks
 - [ ] Task service: create task (one-time or recurring, assignee, due date)
