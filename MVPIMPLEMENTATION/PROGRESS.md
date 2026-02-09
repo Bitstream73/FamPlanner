@@ -1,8 +1,8 @@
 # Build Progress
 
 ## Current Status
-- **Current Phase:** 8
-- **Last Updated:** 2026-02-09T17:55Z
+- **Current Phase:** 10
+- **Last Updated:** 2026-02-09T18:02Z
 - **Last Commit:** pending
 
 ## Phase 0: Environment & Credentials ✅
@@ -78,19 +78,19 @@
 - [x] Handbook service: update, delete, list, search entries
 - [x] Tests for handbook CRUD and search
 
-## Phase 8: Notifications
-- [ ] Notification service: create, list, mark read, delete notifications
-- [ ] Push notification dispatcher: queue and send via web push API
-- [ ] Email notification dispatcher: send via Resend (existing integration)
-- [ ] Reminder rule engine: on-due, 1-hour-before, daily-digest scheduling
-- [ ] Quiet hours filter: suppress notifications during user quiet hours
-- [ ] Tests for notification CRUD, dispatchers, reminders, quiet hours filter
+## Phase 8: Notifications ✅
+- [x] Notification service: create, list, mark read, delete notifications
+- [x] Push notification dispatcher: queue and send via web push API
+- [x] Email notification dispatcher: send via Resend (existing integration)
+- [x] Reminder rule engine: on-due, 1-hour-before, daily-digest scheduling
+- [x] Quiet hours filter: suppress notifications during user quiet hours
+- [x] Tests for notification CRUD, dispatchers, reminders, quiet hours filter
 
-## Phase 9: Security & Data
-- [ ] Audit log service: record who edited/deleted tasks, events, household changes
-- [ ] Audit log queries: filter by user, entity type, action, date range
-- [ ] Data export service: generate CSV for user's tasks and events
-- [ ] Tests for audit logging, queries, and CSV export
+## Phase 9: Security & Data ✅
+- [x] Audit log service: record who edited/deleted tasks, events, household changes
+- [x] Audit log queries: filter by user, entity type, action, date range
+- [x] Data export service: generate CSV for user's tasks and events
+- [x] Tests for audit logging, queries, and CSV export
 
 ## Phase 10: API Routes
 - [ ] Household routes: POST/GET/PUT/DELETE /api/v1/households, invite, join
