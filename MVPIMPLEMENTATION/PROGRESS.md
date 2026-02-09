@@ -1,8 +1,8 @@
 # Build Progress
 
 ## Current Status
-- **Current Phase:** 4
-- **Last Updated:** 2026-02-09T17:31Z
+- **Current Phase:** 5
+- **Last Updated:** 2026-02-09T17:38Z
 - **Last Commit:** pending
 
 ## Phase 0: Environment & Credentials ✅
@@ -46,16 +46,16 @@
 - [x] Calendar queries: day view, week view, month view with filters
 - [x] Tests for calendar, availability, conflict, and recurrence
 
-## Phase 4: Chores & Tasks
-- [ ] Task service: create task (one-time or recurring, assignee, due date)
-- [ ] Task service: update, delete, reassign tasks
-- [ ] Task checklist service: add/remove/reorder sub-steps, toggle complete
-- [ ] Task metadata: time estimate + difficulty tag (easy/medium/hard)
-- [ ] Task completion: mark done with optional note and photo URL
-- [ ] Rotation service: round-robin assignee for recurring tasks
-- [ ] Reminder service: attach reminder rules to tasks (on due, 1hr before)
-- [ ] Task view queries: Today, Upcoming (next 7 days), Overdue
-- [ ] Tests for task CRUD, checklists, rotations, reminders, views
+## Phase 4: Chores & Tasks ✅
+- [x] Task service: create task (one-time or recurring, assignee, due date)
+- [x] Task service: update, delete, reassign tasks
+- [x] Task checklist service: add/remove/reorder sub-steps, toggle complete
+- [x] Task metadata: time estimate + difficulty tag (easy/medium/hard)
+- [x] Task completion: mark done with optional note and photo URL
+- [x] Rotation service: round-robin assignee for recurring tasks
+- [x] Reminder service: attach reminder rules to tasks (on due, 1hr before)
+- [x] Task view queries: Today, Upcoming (next 7 days), Overdue
+- [x] Tests for task CRUD, checklists, rotations, reminders, views
 
 ## Phase 5: Routines
 - [ ] Routine service: create routine (name, type: morning/evening/leaving)
