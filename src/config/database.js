@@ -136,12 +136,25 @@ function runMigrations(db) {
   }
 }
 
-let db;
+const database = { db: null };
 
 if (config.env !== 'test') {
-  db = initDatabase(config.databasePath);
-  runMigrations(db);
+  database.db = initDatabase(config.databasePath);
+  runMigrations(database.db);
 }
 
-export default { db };
-export { initDatabase, runMigrations, MIGRATIONS };
+function initTestDatabase(dbPath = ':memory:') {
+  database.db = initDatabase(dbPath);
+  runMigrations(database.db);
+  return database.db;
+}
+
+function closeDatabase() {
+  if (database.db) {
+    database.db.close();
+    database.db = null;
+  }
+}
+
+export default database;
+export { initDatabase, runMigrations, initTestDatabase, closeDatabase, MIGRATIONS };

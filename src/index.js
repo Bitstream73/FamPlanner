@@ -12,6 +12,9 @@ import { requestLogger } from './middleware/requestLogger.js';
 import { logContext } from './middleware/logContext.js';
 import { createRateLimiter } from './middleware/rateLimiter.js';
 import { errorHandler } from './middleware/errorHandler.js';
+import { authenticate } from './middleware/authenticate.js';
+import { requireAuth } from './middleware/requireAuth.js';
+import authRoutes from './routes/auth.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PKG_VERSION = '1.0.0';
@@ -33,6 +36,7 @@ export function createApp() {
   app.use(express.urlencoded({ extended: true }));
   app.use(cookieParser(config.sessionSecret));
   app.use(express.static(path.join(__dirname, '..', 'public')));
+  app.use(authenticate);
 
   // --- Health check ---
   app.get('/api/health', (req, res) => {
@@ -44,12 +48,14 @@ export function createApp() {
     });
   });
 
-  // --- Route placeholders (filled in Phase 4A and Phase 6) ---
-  // app.use('/api/auth', authRoutes);
-  // app.use('/api/quotes', quotesRoutes);
-  // app.use('/api/authors', authorsRoutes);
-  // app.use('/api/settings', settingsRoutes);
-  // app.use('/api/logs', logsRoutes);
+  // --- Auth routes (public) ---
+  app.use('/api/auth', authRoutes);
+
+  // --- Protected route stubs (filled in Phase 6) ---
+  app.use('/api/quotes', requireAuth, (req, res) => res.json([]));
+  app.use('/api/authors', requireAuth, (req, res) => res.json([]));
+  app.use('/api/settings', requireAuth, (req, res) => res.json({}));
+  app.use('/api/logs', requireAuth, (req, res) => res.json([]));
 
   // --- Socket.IO ---
   io.on('connection', (socket) => {
