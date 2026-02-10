@@ -15,21 +15,26 @@ let pendingEmail = '';
 export function renderLogin(container) {
   container.innerHTML = `
     <div class="auth-container">
-      <h1 class="auth-title">Welcome Back</h1>
-      <p class="auth-subtitle">Sign in to FamPlanner</p>
-      <div id="auth-alert"></div>
-      <form id="login-form" class="card">
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" class="form-input" required autocomplete="email">
+      <div class="auth-card fade-in">
+        <div class="auth-logo">
+          <div class="auth-logo-icon">&#x1F3E0;</div>
         </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" class="form-input" required autocomplete="current-password">
-        </div>
-        <button type="submit" class="btn btn-primary" style="width:100%">Sign In</button>
-      </form>
-      <p class="auth-switch">Don't have an account? <a href="#/register">Register</a></p>
+        <h1 class="auth-title">Welcome Back</h1>
+        <p class="auth-subtitle">Sign in to your family hub</p>
+        <div id="auth-alert"></div>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-input" placeholder="you@example.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-input" placeholder="Enter your password" required autocomplete="current-password">
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%">Sign In</button>
+        </form>
+        <p class="auth-switch">Don't have an account? <a href="#/register">Create one</a></p>
+      </div>
     </div>
   `;
 
@@ -54,26 +59,31 @@ export function renderLogin(container) {
 export function renderRegister(container) {
   container.innerHTML = `
     <div class="auth-container">
-      <h1 class="auth-title">Create Account</h1>
-      <p class="auth-subtitle">Join FamPlanner</p>
-      <div id="auth-alert"></div>
-      <form id="register-form" class="card">
-        <div class="form-group">
-          <label for="displayName">Display Name</label>
-          <input type="text" id="displayName" class="form-input" autocomplete="name">
+      <div class="auth-card fade-in">
+        <div class="auth-logo">
+          <div class="auth-logo-icon">&#x1F46A;</div>
         </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" class="form-input" required autocomplete="email">
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" class="form-input" required autocomplete="new-password">
-          <div id="password-strength" class="password-strength"></div>
-        </div>
-        <button type="submit" class="btn btn-primary" style="width:100%">Register</button>
-      </form>
-      <p class="auth-switch">Already have an account? <a href="#/login">Sign In</a></p>
+        <h1 class="auth-title">Join the Family</h1>
+        <p class="auth-subtitle">Create your FamPlanner account</p>
+        <div id="auth-alert"></div>
+        <form id="register-form">
+          <div class="form-group">
+            <label for="displayName">Display Name</label>
+            <input type="text" id="displayName" class="form-input" placeholder="Your name" autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-input" placeholder="you@example.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-input" placeholder="Create a strong password" required autocomplete="new-password">
+            <div id="password-strength" class="password-strength"></div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%">Create Account</button>
+        </form>
+        <p class="auth-switch">Already have an account? <a href="#/login">Sign in</a></p>
+      </div>
     </div>
   `;
 
@@ -104,18 +114,23 @@ export function renderRegister(container) {
 export function renderVerify2FA(container) {
   container.innerHTML = `
     <div class="auth-container">
-      <h1 class="auth-title">Verify Email</h1>
-      <p class="auth-subtitle">Enter the 6-digit code sent to ${pendingEmail || 'your email'}</p>
-      <div id="auth-alert"></div>
-      <form id="verify-form" class="card">
-        <div class="form-group">
-          <label for="code">Verification Code</label>
-          <input type="text" id="code" class="form-input" maxlength="6" pattern="[0-9]{6}"
-            placeholder="000000" required autocomplete="one-time-code"
-            style="text-align:center; font-size:1.5rem; letter-spacing:0.5rem;">
+      <div class="auth-card fade-in">
+        <div class="auth-logo">
+          <div class="auth-logo-icon">&#x1F512;</div>
         </div>
-        <button type="submit" class="btn btn-primary" style="width:100%">Verify</button>
-      </form>
+        <h1 class="auth-title">Verify Email</h1>
+        <p class="auth-subtitle">Enter the 6-digit code sent to ${pendingEmail || 'your email'}</p>
+        <div id="auth-alert"></div>
+        <form id="verify-form">
+          <div class="form-group">
+            <label for="code">Verification Code</label>
+            <input type="text" id="code" class="form-input" maxlength="6" pattern="[0-9]{6}"
+              placeholder="000000" required autocomplete="one-time-code"
+              style="text-align:center; font-size:1.5rem; letter-spacing:0.5rem; font-family: 'Poppins', sans-serif; font-weight: 700;">
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%">Verify</button>
+        </form>
+      </div>
     </div>
   `;
 

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'famplanner-v2';
+const CACHE_NAME = 'famplanner-v4';
 const STATIC_ASSETS = [
   '/',
   '/index.html',

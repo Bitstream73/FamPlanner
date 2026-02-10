@@ -4,34 +4,122 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="FamPlanner - Family Planning App">
-  <meta name="theme-color" content="#4f46e5">
+  <meta name="theme-color" content="#2d9f93">
   <link rel="manifest" href="/manifest.json">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F3E0;</text></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F3E0;</text></svg>">
   <title>FamPlanner</title>
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-  <nav id="nav" class="nav hidden">
-    <div class="nav-brand">FamPlanner</div>
-    <div class="nav-links">
-      <a href="#/dashboard" class="nav-link" data-page="dashboard">Dashboard</a>
-      <a href="#/calendar" class="nav-link" data-page="calendar">Calendar</a>
-      <a href="#/tasks" class="nav-link" data-page="tasks">Tasks</a>
-      <a href="#/routines" class="nav-link" data-page="routines">Routines</a>
-      <a href="#/announcements" class="nav-link" data-page="announcements">Feed</a>
-      <a href="#/handbook" class="nav-link" data-page="handbook">Handbook</a>
-      <a href="#/households" class="nav-link" data-page="households">Household</a>
-      <a href="#/notifications" class="nav-link" data-page="notifications">Alerts</a>
-      <a href="#/settings" class="nav-link" data-page="settings">Settings</a>
-      <button id="logout-btn" class="btn btn-sm btn-outline">Logout</button>
+  <div class="app-layout">
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar" class="sidebar hidden">
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">&#x1F3E0;</div>
+        <span class="sidebar-title">FamPlanner</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-section-label">Home</div>
+        <a href="#/dashboard" class="nav-item" data-page="dashboard">
+          <span class="nav-icon">&#x1F4CA;</span>
+          Dashboard
+        </a>
+
+        <div class="sidebar-section-label">Plan</div>
+        <a href="#/calendar" class="nav-item" data-page="calendar">
+          <span class="nav-icon">&#x1F4C5;</span>
+          Calendar
+        </a>
+        <a href="#/tasks" class="nav-item" data-page="tasks">
+          <span class="nav-icon">&#x2705;</span>
+          Tasks
+        </a>
+        <a href="#/routines" class="nav-item" data-page="routines">
+          <span class="nav-icon">&#x1F504;</span>
+          Routines
+        </a>
+
+        <div class="sidebar-section-label">Connect</div>
+        <a href="#/announcements" class="nav-item" data-page="announcements">
+          <span class="nav-icon">&#x1F4E2;</span>
+          Feed
+        </a>
+        <a href="#/handbook" class="nav-item" data-page="handbook">
+          <span class="nav-icon">&#x1F4D6;</span>
+          Handbook
+        </a>
+        <a href="#/notifications" class="nav-item" data-page="notifications">
+          <span class="nav-icon">&#x1F514;</span>
+          Alerts
+          <span id="nav-notification-badge" class="nav-badge hidden">0</span>
+        </a>
+
+        <div class="sidebar-section-label">Manage</div>
+        <a href="#/households" class="nav-item" data-page="households">
+          <span class="nav-icon">&#x1F46A;</span>
+          Household
+        </a>
+        <a href="#/settings" class="nav-item" data-page="settings">
+          <span class="nav-icon">&#x2699;&#xFE0F;</span>
+          Settings
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="sidebar-avatar" id="user-avatar">?</div>
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-name" id="user-display-name">User</div>
+            <div class="sidebar-user-role" id="user-role">Member</div>
+          </div>
+          <button id="logout-btn" title="Sign out">&#x1F6AA;</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Mobile sidebar overlay -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <!-- Mobile hamburger -->
+    <button id="mobile-menu-toggle" class="mobile-menu-toggle hidden">&#x2630;</button>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <main id="app" class="container">
+        <div id="page-content"></div>
+      </main>
     </div>
-  </nav>
 
-  <main id="app" class="container">
-    <div id="page-content"></div>
-  </main>
+    <!-- Mobile Bottom Nav -->
+    <nav id="mobile-nav" class="mobile-nav hidden">
+      <div class="mobile-nav-items">
+        <a href="#/dashboard" class="mobile-nav-item" data-page="dashboard">
+          <span class="mobile-icon">&#x1F3E0;</span>
+          Home
+        </a>
+        <a href="#/calendar" class="mobile-nav-item" data-page="calendar">
+          <span class="mobile-icon">&#x1F4C5;</span>
+          Calendar
+        </a>
+        <a href="#/tasks" class="mobile-nav-item" data-page="tasks">
+          <span class="mobile-icon">&#x2705;</span>
+          Tasks
+        </a>
+        <a href="#/announcements" class="mobile-nav-item" data-page="announcements">
+          <span class="mobile-icon">&#x1F4E2;</span>
+          Feed
+        </a>
+        <a href="#/notifications" class="mobile-nav-item" data-page="notifications">
+          <span class="mobile-icon">&#x1F514;</span>
+          Alerts
+        </a>
+      </div>
+    </nav>
+  </div>
 
+  <!-- Modal -->
   <div id="modal-overlay" class="modal-overlay hidden">
     <div id="modal" class="modal">
       <button class="modal-close" aria-label="Close">&times;</button>

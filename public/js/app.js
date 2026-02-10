@@ -16,7 +16,9 @@ import { renderHandbook } from './handbook-page.js';
 import { renderNotifications } from './notifications-page.js';
 
 const pageContent = () => document.getElementById('page-content');
-const nav = () => document.getElementById('nav');
+const sidebar = () => document.getElementById('sidebar');
+const mobileNav = () => document.getElementById('mobile-nav');
+const menuToggle = () => document.getElementById('mobile-menu-toggle');
 
 let currentUser = null;
 
@@ -31,21 +33,58 @@ async function checkAuth() {
   }
 }
 
+function updateUserDisplay() {
+  if (!currentUser) return;
+  const avatarEl = document.getElementById('user-avatar');
+  const nameEl = document.getElementById('user-display-name');
+  if (avatarEl && currentUser.displayName) {
+    avatarEl.textContent = currentUser.displayName.charAt(0).toUpperCase();
+  }
+  if (nameEl && currentUser.displayName) {
+    nameEl.textContent = currentUser.displayName;
+  }
+}
+
 function showNav(show) {
-  const n = nav();
-  if (show) n.classList.remove('hidden');
-  else n.classList.add('hidden');
+  const s = sidebar();
+  const m = mobileNav();
+  const t = menuToggle();
+  if (show) {
+    s?.classList.remove('hidden');
+    m?.classList.remove('hidden');
+    t?.classList.remove('hidden');
+    document.querySelector('.main-content')?.style.removeProperty('margin-left');
+  } else {
+    s?.classList.add('hidden');
+    m?.classList.add('hidden');
+    t?.classList.add('hidden');
+    // When nav hidden (auth pages), main content takes full width
+    const mc = document.querySelector('.main-content');
+    if (mc) mc.style.marginLeft = '0';
+  }
 }
 
 function setActiveLink(page) {
-  document.querySelectorAll('.nav-link').forEach((link) => {
+  // Sidebar links
+  document.querySelectorAll('.nav-item').forEach((link) => {
     link.classList.toggle('active', link.dataset.page === page);
   });
+  // Mobile bottom nav
+  document.querySelectorAll('.mobile-nav-item').forEach((link) => {
+    link.classList.toggle('active', link.dataset.page === page);
+  });
+}
+
+function closeMobileSidebar() {
+  sidebar()?.classList.remove('open');
+  document.getElementById('sidebar-overlay')?.classList.remove('active');
 }
 
 async function router() {
   const hash = window.location.hash || '#/';
   const container = pageContent();
+
+  closeMobileSidebar();
 
   // Public routes (no auth needed)
   if (hash === '#/login') {
@@ -72,13 +111,14 @@ async function router() {
   }
 
   showNav(true);
+  updateUserDisplay();
 
   // Route matching
   if (hash === '#/' || hash.startsWith('#/?')) {
-    setActiveLink('home');
-    await renderHome(container);
+    setActiveLink('dashboard');
+    await renderDashboard(container);
   } else if (hash.startsWith('#/quotes/')) {
-    setActiveLink('home');
+    setActiveLink('');
     const id = hash.split('/')[2];
     await renderQuote(container, id);
   } else if (hash === '#/authors') {
@@ -92,7 +132,7 @@ async function router() {
     setActiveLink('settings');
     await renderSettings(container);
   } else if (hash === '#/logs') {
-    setActiveLink('logs');
+    setActiveLink('');
     await renderLogs(container);
   } else if (hash === '#/dashboard') {
     setActiveLink('dashboard');
@@ -123,7 +163,13 @@ async function router() {
     setActiveLink('notifications');
     await renderNotifications(container);
   } else {
-    container.innerHTML = '<h2>Page not found</h2>';
+    container.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">&#x1F50D;</div>
+        <div class="empty-title">Page not found</div>
+        <div class="empty-text">The page you're looking for doesn't exist.</div>
+        <a href="#/dashboard" class="btn btn-primary">Go to Dashboard</a>
+      </div>`;
   }
 }
 
@@ -141,6 +187,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     disconnectSocket();
     await logout();
   });
+
+  // Mobile menu toggle
+  document.getElementById('mobile-menu-toggle')?.addEventListener('click', () => {
+    const s = sidebar();
+    const overlay = document.getElementById('sidebar-overlay');
+    s?.classList.toggle('open');
+    overlay?.classList.toggle('active');
+  });
+
+  // Close sidebar on overlay click
+  document.getElementById('sidebar-overlay')?.addEventListener('click', closeMobileSidebar);
 
   // Close modal
   document.querySelector('.modal-close')?.addEventListener('click', () => {
@@ -160,7 +217,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Init socket for real-time updates
   initSocket((type, data) => {
-    if (window.location.hash === '#/' || window.location.hash === '') {
+    if (window.location.hash === '#/dashboard' || window.location.hash === '#/' || window.location.hash === '') {
       router();
     }
   });
